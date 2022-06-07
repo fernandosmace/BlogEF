@@ -2,6 +2,7 @@
 using System.Linq;
 using Blog.Data;
 using Blog.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Blog
@@ -38,12 +39,19 @@ namespace Blog
                 // context.Remove(tag);
                 // context.SaveChanges();
 
-                var tags = context.Tags.ToList();
+                // var tags = context.Tags.ToList();
 
-                foreach (var tag in tags)
-                {
-                    Console.WriteLine($"Nome: {tag.Name}");
-                }
+                // foreach (var tag in tags)
+                // {
+                //     Console.WriteLine($"Nome: {tag.Name}");
+                // }
+
+                var tag = context
+                    .Tags
+                    .AsNoTracking()
+                    .FirstOrDefault(x => x.Id == 3);
+
+                Console.WriteLine(tag.Name);
             }
         }
     }
