@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Blog.Models
 {
-    [Table("[Post]")]
+    [Table("Post")]
     public class Post
     {
         [Key]
