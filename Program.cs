@@ -17,36 +17,46 @@ namespace Blog
 
             using var context = new BlogDataContext();
 
-            var user = new User()
-            {
-                Name = "André Baltieri",
-                Slug = "andrebaltieri",
-                Email = "andre@balta.io",
-                Bio = "9x Microsoft MVP",
-                Image = "http://",
-                PasswordHash = "123098457"
-            };
+            // var user = new User()
+            // {
+            //     Name = "André Baltieri",
+            //     Slug = "andrebaltieri",
+            //     Email = "andre@balta.io",
+            //     Bio = "9x Microsoft MVP",
+            //     Image = "http://",
+            //     PasswordHash = "123098457"
+            // };
 
-            var category = new Category()
-            {
-                Name = "Backend",
-                Slug = "backend"
-            };
+            // var category = new Category()
+            // {
+            //     Name = "Backend",
+            //     Slug = "backend"
+            // };
 
-            var post = new Post()
-            {
-                Title = "Meu primeiro post",
-                Author = user,
-                Category = category,
-                Body = "<p>Hello World!</p>",
-                Slug = "comecando-com-ef-core",
-                Summary = "Neste artigo vamos aprender EF Core",
-                CreateDate = DateTime.Now,
-                LastUpdateDate = DateTime.Now
-            };
+            // var post = new Post()
+            // {
+            //     Title = "Meu primeiro post",
+            //     Author = user,
+            //     Category = category,
+            //     Body = "<p>Hello World!</p>",
+            //     Slug = "comecando-com-ef-core",
+            //     Summary = "Neste artigo vamos aprender EF Core",
+            //     CreateDate = DateTime.Now,
+            //     LastUpdateDate = DateTime.Now
+            // };
 
-            context.Posts.Add(post);
-            context.SaveChanges();
+            // context.Posts.Add(post);
+            // context.SaveChanges();
+
+            var posts = context
+                        .Posts
+                        .AsNoTracking()
+                        .Include(x => x.Author)
+                        .OrderByDescending(x => x.LastUpdateDate)
+                        .ToList();
+
+            foreach (var post in posts)
+                Console.WriteLine($"{post.Title} escrito por {post.Author?.Name}");
         }
     }
 }
