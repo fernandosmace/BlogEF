@@ -52,6 +52,7 @@ namespace Blog
                         .Posts
                         .AsNoTracking()
                         .Include(x => x.Author)
+                        .Include(x => x.Category)
                         .OrderByDescending(x => x.LastUpdateDate)
                         .ToList();
 

@@ -1,3 +1,4 @@
+using System;
 using Blog.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +17,9 @@ namespace Blog.Data
 
         public static string ConnectionString = "";
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer($"{ConnectionString}");
-
+        {
+            options.UseSqlServer($"{ConnectionString}");
+            options.LogTo(Console.WriteLine);
+        }
     }
 }
