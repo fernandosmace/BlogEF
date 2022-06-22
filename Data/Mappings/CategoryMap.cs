@@ -35,8 +35,6 @@ namespace Blog.Data.Mappings
             //Index
             builder.HasIndex(x => x.Slug, "IX_Category_Slug")
                 .IsUnique();
-
-            throw new System.NotImplementedException();
         }
     }
 }
