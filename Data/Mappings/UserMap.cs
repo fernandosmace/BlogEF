@@ -50,7 +50,7 @@ namespace Blog.Data.Mappings
                 .HasColumnType("VARCHAR")
                 .HasMaxLength(80);
 
-            builder.HasIndex(x => x.Slug, "IX_Category_Slug")
+            builder.HasIndex(x => x.Slug, "IX_User_Slug")
                 .IsUnique();
         }
     }
