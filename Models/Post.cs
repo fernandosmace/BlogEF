@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace Blog.Models
 {
     public class Post
@@ -12,5 +14,7 @@ namespace Blog.Models
         public DateTime LastUpdateDate { get; set; }
         public Category Category { get; set; }
         public User Author { get; set; }
+
+        public List<Tag> Tag { get; set; }
     }
 }
