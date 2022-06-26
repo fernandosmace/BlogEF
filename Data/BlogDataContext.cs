@@ -17,9 +17,6 @@ namespace Blog.Data
 
         public static string ConnectionString = "";
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlServer($"{ConnectionString}");
-            options.LogTo(Console.WriteLine);
-        }
+            => options.UseSqlServer($"{ConnectionString}");
     }
 }
