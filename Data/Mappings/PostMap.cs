@@ -79,8 +79,6 @@ namespace Blog.Data.Mappings
 
             builder.HasIndex(x => x.Slug, "IX_Post_Slug")
                 .IsUnique();
-
-            throw new System.NotImplementedException();
         }
     }
 }
