@@ -34,7 +34,8 @@ namespace Blog.Data.Mappings
 
             builder.Property(x => x.Slug)
                 .IsRequired()
-                .HasColumnName("VARCHAR")
+                .HasColumnName("Slug")
+                .HasColumnType("VARCHAR")
                 .HasMaxLength(80);
 
             builder.Property(x => x.CreateDate)
