@@ -11,7 +11,7 @@ namespace Blog
         static void Main(string[] args)
         {
             var config = new ConfigurationBuilder().AddUserSecrets<Program>().Build();
-            BlogDataContext.ConnectionString = config["Database:ConnectionString"];
+            BlogDataContext.ConnectionString = config["DatabaseLocal:ConnectionString"];
 
             using var context = new BlogDataContext();
 
@@ -27,7 +27,7 @@ namespace Blog
 
             // context.SaveChanges();
 
-            var user = context.Users.FirstOrDefault(u => u.Id == 6);
+            var user = context.Users.FirstOrDefault();
 
             var post = new Post
             {
