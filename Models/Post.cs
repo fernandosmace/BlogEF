@@ -16,5 +16,8 @@ namespace Blog.Models
         public User Author { get; set; }
 
         public List<Tag> Tags { get; set; }
+
+        public Post()
+            => Tags = new List<Tag>();
     }
 }
