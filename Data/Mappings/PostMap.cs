@@ -64,18 +64,19 @@ namespace Blog.Data.Mappings
                 .WithMany(x => x.Posts)
                 .UsingEntity<Dictionary<string, object>>(
                     "PostTag",
-                    post => post
-                        .HasOne<Tag>()
-                        .WithMany()
-                        .HasForeignKey("PostId")
-                        .HasConstraintName("FK_Post_Tag_PostId")
-                        .OnDelete(DeleteBehavior.NoAction),
                     tag => tag
-                        .HasOne<Post>()
+                        .HasOne<Tag>()
                         .WithMany()
                         .HasForeignKey("TagId")
                         .HasConstraintName("FK_PostTag_TagId")
+                        .OnDelete(DeleteBehavior.NoAction),
+                    post => post
+                        .HasOne<Post>()
+                        .WithMany()
+                        .HasForeignKey("PostId")
+                        .HasConstraintName("FK_Post_Tag_PostId")
                         .OnDelete(DeleteBehavior.NoAction)
+
                 );
 
             builder.HasIndex(x => x.Slug, "IX_Post_Slug")
