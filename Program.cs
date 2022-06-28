@@ -27,26 +27,44 @@ namespace Blog
 
             // context.SaveChanges();
 
-            var user = context.Users.FirstOrDefault();
+            // var user = context.Users.FirstOrDefault();
 
-            var post = new Post
+            // var post = new Post
+            // {
+            //     Author = user,
+            //     Body = "Meu artigo",
+            //     Category = new Category
+            //     {
+            //         Name = "BackEnd",
+            //         Slug = "back-end"
+            //     },
+            //     CreateDate = DateTime.Now,
+            //     // LastUpdateDate =
+            //     Slug = "meu-artigo",
+            //     Summary = "Neste artigo vamos conferir...",
+            //     // Tags = null,
+            //     Title = "Meu artigo"
+            // };
+
+            // context.Posts.Add(post);
+            // context.SaveChanges();
+
+
+            var post = context.Posts.First();
+
+            post.Tags.Add(new Tag
             {
-                Author = user,
-                Body = "Meu artigo",
-                Category = new Category
-                {
-                    Name = "BackEnd",
-                    Slug = "back-end"
-                },
-                CreateDate = DateTime.Now,
-                // LastUpdateDate =
-                Slug = "meu-artigo",
-                Summary = "Neste artigo vamos conferir...",
-                // Tags = null,
-                Title = "Meu artigo"
-            };
+                Name = "Dotnet",
+                Slug = "dotnet"
+            });
 
-            context.Posts.Add(post);
+            post.Tags.Add(new Tag
+            {
+                Name = "Development",
+                Slug = "development"
+            });
+
+            context.Posts.Update(post);
             context.SaveChanges();
         }
     }
