@@ -9,5 +9,8 @@ namespace Blog.Models
         public string Slug { get; set; }
 
         public List<Post> Posts { get; set; }
+
+        public Tag()
+            => Posts = new List<Post>();
     }
 }
